@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Form Validation</title>
+    <link rel="stylesheet" href="style.css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+  </head>
+  <body>
+    <h1>Form Validation</h1>
+    <div class="wrapper">
+      <div class="distance">
+        <label for="Email">Email</label>
+        <input for="Email" type="text" id="Email" name="Email" />
+      </div>
+      <div class="distance">
+        <label for="Phone">Phone</label>
+        <input type="tel" id="Phone" name="Phone" />
+      </div>
+      <div class="distance">
+        <label for="Password">Password</label>
+        <input for="Password" type="password" id="Password" name="Password" />
+        <button id="show">Show Password</button>
+      </div>
+      <div class="distance">
+        <label for="con_password">Confirm Password</label>
+        <input
+          for="Con_Password"
+          type="password"
+          id="Con_Password"
+          name="Con_Password"
+        />
+      </div>
+      <input type="submit" id="btn" />
+    </div>
+    <div id="error"></div>
+    <div id="success"></div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
