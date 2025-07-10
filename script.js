@@ -30,12 +30,47 @@ $(document).ready(function () {
 
     //password
     var passvalue = $("#Password").val();
+    var big=0,small=0,special=0;
+    for(var i=0;i<passvalue.length;i++){
+      if(passvalue[i]>='a' && passvalue[i]<='z'){
+        big++;
+      }
+      else if(passvalue[i]>='A' && passvalue[i]<='Z'){
+        small++;
+      }
+      else if(passvalue[i]=='@' || passvalue[i]=='#' || passvalue[i]=='$' || passvalue[i]=='%' || passvalue[i]=='&' || passvalue[i]=='+'
+        || passvalue[i]=='-' || passvalue[i]=='=' || passvalue[i]=='?' || passvalue[i]=='/' || passvalue[i]=='^'
+      ){
+        special++;
+      }
+    }
     if (passvalue.length < 8) {
       errormessage += "<p>Password is Weak</p>";
     } else if ($("#Password").val() == "") {
       missing += "<p>Password is required</p>";
     }
-    if ($("#Password").val() != $("#Con_Password").val()) {
+    if(special==0 && big==0 && small==0){
+      errormessage += "<p>Need atleast one special,upper and lower characters</p>"
+    }
+    else if(special==0 && big==0){
+      errormessage += "<p>Need atleast one special and upper characters</p>"
+    }
+    else if(big==0 && small==0){
+      errormessage += "<p>Need atleast one upper and lower characters</p>"
+    }
+    else if(special==0 && small==0){
+      errormessage += "<p>Need atleast one special and lower characters</p>"
+    }
+    else if(special==0){
+      errormessage += "<p>Need at least one special character</p>";
+    }
+    else if(big==0){
+      errormessage += "<p>Need atleast one upper characters</p>"
+    }
+    else if(small==0){
+      errormessage += "<p>Need atleast one lower characters</p>"
+    }
+    else if ($("#Password").val() != $("#Con_Password").val()) {
       errormessage += "<p>Password does not Match</p>";
     }
     if (errormessage == "" && missing == "") {
@@ -61,7 +96,6 @@ $(document).ready(function () {
     }
   });
   $("#Phone").keydown(function (e) {
-    console.log(e.which);
     if (e.which === 8 || (e.which >= 48 && e.which <= 57)) {
       return;
     } else {
